@@ -2,120 +2,505 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Delete Your Vudu Notify Account</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Request the deletion of your Vudu Notify account and associated personal data."
+  >
+
+  <title>Vudu Notify – Account Deletion</title>
 
   <style>
-    body {
-      max-width: 850px;
-      margin: 40px auto;
-      padding: 0 20px;
-      font-family: Arial, sans-serif;
-      line-height: 1.7;
-      color: #222;
+    :root {
+      --background: #f5f6f8;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #667085;
+      --border: #e4e7ec;
+      --primary: #111827;
+      --primary-hover: #000000;
+      --notice-background: #f9fafb;
+      --notice-border: #98a2b3;
+      --danger-background: #fff5f5;
+      --danger-border: #d92d20;
+      --link: #175cd3;
     }
 
-    h1, h2 {
-      color: #111;
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--link);
+    }
+
+    .page {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px;
+      box-shadow: 0 8px 30px rgba(16, 24, 40, 0.06);
+    }
+
+    .header {
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 5vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      margin: 40px 0 12px;
+      font-size: 23px;
+      line-height: 1.3;
+    }
+
+    p {
+      margin: 0 0 16px;
+    }
+
+    ul {
+      margin: 12px 0 20px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .updated {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .button-container {
+      margin: 28px 0 18px;
     }
 
     .button {
-      display: inline-block;
-      margin: 15px 0;
-      padding: 12px 20px;
-      background: #111;
-      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 13px 22px;
+      border-radius: 8px;
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 700;
       text-decoration: none;
-      border-radius: 6px;
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .button:hover {
+      background: var(--primary-hover);
+      box-shadow: 0 6px 18px rgba(17, 24, 39, 0.18);
+      transform: translateY(-1px);
+    }
+
+    .button:focus-visible {
+      outline: 3px solid rgba(23, 92, 211, 0.35);
+      outline-offset: 3px;
+    }
+
+    .fallback {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--notice-background);
+    }
+
+    .email-address {
+      display: inline-block;
+      margin-top: 6px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
     }
 
     .notice {
-      padding: 15px;
-      background: #f5f5f5;
-      border-left: 4px solid #555;
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--notice-border);
+      border-radius: 6px;
+      background: var(--notice-background);
+    }
+
+    .warning {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--danger-border);
+      border-radius: 6px;
+      background: var(--danger-background);
+    }
+
+    .divider {
+      margin: 48px 0;
+      border: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .language-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .language-label {
+      display: inline-flex;
+      padding: 4px 9px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 20px 12px;
+      }
+
+      .card {
+        padding: 28px 20px;
+        border-radius: 12px;
+      }
+
+      .button {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .page {
+        max-width: none;
+        padding: 0;
+      }
+
+      .card {
+        border: 0;
+        box-shadow: none;
+      }
+
+      .button-container {
+        display: none;
+      }
     }
   </style>
 </head>
 
 <body>
-  <h1>Delete Your Vudu Notify Account</h1>
+  <main class="page">
+    <article class="card">
+      <header class="header">
+        <p class="brand">Vudu Notify</p>
+        <h1>Account and Data Deletion</h1>
 
-  <p>
-    This page explains how users of Vudu Notify can request the deletion
-    of their account and associated personal data.
-  </p>
+        <p>
+          This page explains how users can request the deletion of their
+          Vudu Notify account and associated personal data.
+        </p>
 
-  <h2>How to request account deletion</h2>
+        <p class="updated">
+          Last updated: July 24, 2026
+        </p>
+      </header>
 
-  <p>
-    Send an email to Vudu Notify support using the button below.
-    Use the email address associated with your Vudu Notify account.
-  </p>
+      <section aria-labelledby="request-en">
+        <div class="language-title">
+          <h2 id="request-en">How to request account deletion</h2>
+          <span class="language-label">English</span>
+        </div>
 
-  <a
-    class="button"
-    href="mailto:support@vudumobile.ca?subject=Vudu%20Notify%20Account%20Deletion%20Request"
-  >
-    Request account deletion
-  </a>
+        <p>
+          To request the deletion of your Vudu Notify account, send an
+          email to our support team using the email address associated
+          with your account.
+        </p>
 
-  <p>Please include the following information:</p>
+        <div class="button-container">
+          <a
+            class="button"
+            href="mailto:support@vudumobile.ca?subject=Vudu%20Notify%20Account%20Deletion%20Request&body=Hello%2C%0A%0AI%20would%20like%20to%20request%20the%20deletion%20of%20my%20Vudu%20Notify%20account%20and%20associated%20personal%20data.%0A%0AFull%20name%3A%20%0AAccount%20email%20or%20username%3A%20%0AOrganization%3A%20%0A%0AThank%20you."
+          >
+            Request account deletion
+          </a>
+        </div>
 
-  <ul>
-    <li>Your full name</li>
-    <li>The email address or username associated with your account</li>
-    <li>Your organization name, if applicable</li>
-    <li>A clear request to delete your Vudu Notify account</li>
-  </ul>
+        <div class="fallback">
+          <strong>If the button does not open your email application:</strong>
 
-  <h2>Data that will be deleted</h2>
+          <p>
+            Send your request manually to:
+          </p>
 
-  <p>
-    After the request has been verified and approved, the account and
-    associated personal information will be deleted or anonymized,
-    including:
-  </p>
+          <a
+            class="email-address"
+            href="mailto:support@vudumobile.ca"
+          >
+            support@vudumobile.ca
+          </a>
+        </div>
 
-  <ul>
-    <li>Account profile information</li>
-    <li>Authentication information</li>
-    <li>Device and notification identifiers</li>
-    <li>Other personal data associated with the account</li>
-  </ul>
+        <p style="margin-top: 24px;">
+          Please include the following information:
+        </p>
 
-  <h2>Data that may be retained</h2>
+        <ul>
+          <li>Your full name</li>
+          <li>The email address or username associated with your account</li>
+          <li>Your organization name, if applicable</li>
+          <li>A clear request to delete your account and associated data</li>
+        </ul>
+      </section>
 
-  <p>
-    Certain information may be retained when required for legal,
-    contractual, security, auditing, fraud-prevention, or regulatory
-    purposes. Information may also be retained in backups for a limited
-    period before being securely removed.
-  </p>
+      <section aria-labelledby="deleted-data-en">
+        <h2 id="deleted-data-en">Data that will be deleted</h2>
 
-  <div class="notice">
-    Account deletion is permanent. After deletion, access to Vudu Notify
-    and associated information may not be recoverable.
-  </div>
+        <p>
+          After your request has been verified and processed, the following
+          information associated with your account may be deleted or
+          anonymized:
+        </p>
 
-  <h2>Processing time</h2>
+        <ul>
+          <li>Account and profile information</li>
+          <li>Authentication and login information</li>
+          <li>Device and push notification identifiers</li>
+          <li>Personal information associated with the account</li>
+          <li>Other account-related data, where applicable</li>
+        </ul>
+      </section>
 
-  <p>
-    We will review the request and may contact the user to verify their
-    identity before deleting the account.
-  </p>
+      <section aria-labelledby="retained-data-en">
+        <h2 id="retained-data-en">Data that may be retained</h2>
 
-  <h2>Contact</h2>
+        <p>
+          Certain information may be retained when required for legal,
+          contractual, security, auditing, fraud-prevention, regulatory,
+          or legitimate business purposes.
+        </p>
 
-  <p>
-    Vudu Notify<br>
-    Versaterm Public Safety Inc.<br>
-    Email:
-    <a href="mailto:support@vudumobile.ca">
-      support@vudumobile.ca
-    </a>
-  </p>
+        <p>
+          Information stored in backups may remain for a limited period
+          before being securely deleted according to our retention
+          procedures.
+        </p>
+      </section>
 
-  <p>Last updated: July 24, 2026</p>
+      <section aria-labelledby="processing-en">
+        <h2 id="processing-en">Verification and processing</h2>
+
+        <p>
+          We may contact you to verify your identity and confirm that you
+          are authorized to request deletion of the account.
+        </p>
+
+        <p>
+          The request will be processed after verification and in
+          accordance with applicable legal, contractual, and data-retention
+          requirements.
+        </p>
+
+        <div class="warning">
+          <strong>Important:</strong>
+          Account deletion is permanent. Once the deletion is completed,
+          access to the account and associated information may not be
+          recoverable.
+        </div>
+      </section>
+
+      <hr class="divider">
+
+      <section lang="fr-CA" aria-labelledby="request-fr">
+        <div class="language-title">
+          <h2 id="request-fr">Demander la suppression du compte</h2>
+          <span class="language-label">Français</span>
+        </div>
+
+        <p>
+          Pour demander la suppression de votre compte Vudu Notify,
+          envoyez un courriel à notre équipe de soutien en utilisant
+          l’adresse associée à votre compte.
+        </p>
+
+        <div class="button-container">
+          <a
+            class="button"
+            href="mailto:support@vudumobile.ca?subject=Demande%20de%20suppression%20du%20compte%20Vudu%20Notify&body=Bonjour%2C%0A%0AJe%20souhaite%20demander%20la%20suppression%20de%20mon%20compte%20Vudu%20Notify%20et%20des%20donn%C3%A9es%20personnelles%20associ%C3%A9es.%0A%0ANom%20complet%20%3A%20%0ACourriel%20ou%20nom%20d%E2%80%99utilisateur%20du%20compte%20%3A%20%0AOrganisation%20%3A%20%0A%0AMerci."
+          >
+            Demander la suppression
+          </a>
+        </div>
+
+        <div class="fallback">
+          <strong>
+            Si le bouton n’ouvre pas votre application de messagerie :
+          </strong>
+
+          <p>
+            Envoyez votre demande manuellement à :
+          </p>
+
+          <a
+            class="email-address"
+            href="mailto:support@vudumobile.ca"
+          >
+            support@vudumobile.ca
+          </a>
+        </div>
+
+        <p style="margin-top: 24px;">
+          Veuillez inclure les renseignements suivants :
+        </p>
+
+        <ul>
+          <li>Votre nom complet</li>
+          <li>L’adresse courriel ou le nom d’utilisateur associé au compte</li>
+          <li>Le nom de votre organisation, s’il y a lieu</li>
+          <li>Une demande claire de suppression du compte et des données associées</li>
+        </ul>
+      </section>
+
+      <section lang="fr-CA" aria-labelledby="deleted-data-fr">
+        <h2 id="deleted-data-fr">Données qui seront supprimées</h2>
+
+        <p>
+          Après la vérification et le traitement de votre demande, les
+          renseignements suivants associés à votre compte pourront être
+          supprimés ou anonymisés :
+        </p>
+
+        <ul>
+          <li>Les renseignements du compte et du profil</li>
+          <li>Les renseignements d’authentification et de connexion</li>
+          <li>Les identifiants de l’appareil et des notifications push</li>
+          <li>Les renseignements personnels associés au compte</li>
+          <li>Les autres données liées au compte, s’il y a lieu</li>
+        </ul>
+      </section>
+
+      <section lang="fr-CA" aria-labelledby="retained-data-fr">
+        <h2 id="retained-data-fr">Données pouvant être conservées</h2>
+
+        <p>
+          Certains renseignements peuvent être conservés lorsque cela est
+          nécessaire pour respecter des obligations légales,
+          contractuelles, réglementaires, de sécurité, d’audit ou de
+          prévention de la fraude.
+        </p>
+
+        <p>
+          Les renseignements enregistrés dans les sauvegardes peuvent
+          rester disponibles pendant une période limitée avant d’être
+          supprimés de manière sécurisée conformément à nos procédures de
+          conservation.
+        </p>
+      </section>
+
+      <section lang="fr-CA" aria-labelledby="processing-fr">
+        <h2 id="processing-fr">Vérification et traitement</h2>
+
+        <p>
+          Nous pouvons communiquer avec vous afin de vérifier votre identité
+          et de confirmer que vous êtes autorisé à demander la suppression
+          du compte.
+        </p>
+
+        <p>
+          La demande sera traitée après vérification et conformément aux
+          exigences légales, contractuelles et de conservation applicables.
+        </p>
+
+        <div class="warning">
+          <strong>Important :</strong>
+          la suppression du compte est permanente. Une fois la suppression
+          terminée, l’accès au compte et aux renseignements associés peut
+          ne plus être récupérable.
+        </div>
+      </section>
+
+      <section aria-labelledby="contact">
+        <h2 id="contact">Contact</h2>
+
+        <p>
+          Vudu Notify<br>
+          Versaterm Public Safety Inc.<br>
+          Email:
+          <a href="mailto:support@vudumobile.ca">
+            support@vudumobile.ca
+          </a>
+        </p>
+      </section>
+
+      <footer class="footer">
+        <p>
+          © 2026 Versaterm Public Safety Inc. All rights reserved.
+        </p>
+      </footer>
+    </article>
+  </main>
 </body>
 </html>
